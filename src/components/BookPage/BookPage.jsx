@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { API_URL } from "../../constants"
 
-const Book = () => {
+const BookPage = () => {
     const {id} = useParams()
     const [book, setBook] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -17,15 +17,15 @@ const Book = () => {
         <>
             {isLoading && <h1>Loading...</h1>}
             {
-                book && <div className="bookpage">
-                    <div>
-                        <img src={book.volumeInfo.imageLinks.medium} width={500} alt={book.volumeInfo.title} />
+                book && <div className="book-page">
+                    <div className="book-image">
+                        {book.volumeInfo?.imageLinks && <img src={book.volumeInfo.imageLinks.thumbnail} width={300} alt={book.volumeInfo.title} />}
                     </div>
-                    <div>
-                        <p>{book && book.volumeInfo.categories.join('/ ')}</p>
+                    <div className="book-info">
+                        <p>{book.volumeInfo?.categories && book.volumeInfo.categories.join('/ ')}</p>
                         <h1>{book.volumeInfo.title}</h1>
-                        <p>{book && book.volumeInfo.authors.join(', ')}</p>
-                        <p>{book && book.volumeInfo.description}</p>
+                        <p><i>{book.volumeInfo?.authors && book.volumeInfo.authors.join(', ')}</i></p>
+                        <div>{book.volumeInfo.description}</div>
                     </div>
                 </div>
             }
@@ -33,4 +33,4 @@ const Book = () => {
     )
 }
 
-export default Book
+export default BookPage
