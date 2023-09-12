@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_URL } from "../constants";
 const API_KEY = import.meta.env.API_KEY
-const API_URL = "https://www.googleapis.com/books/v1/volumes?"
 
 const initialState = {
     books: [],
@@ -22,7 +22,7 @@ export const fetchBooks = createAsyncThunk(
         orderBy = 'relevance',
         startIndex = 0
     }) => {
-        const data = await fetch(`${API_URL}q=${q}&subject=${subject}&orderBy=${orderBy}&startIndex=${startIndex}&key=${API_KEY}`).then(response => response.json())
+        const data = await fetch(`${API_URL}?q=${q}&subject=${subject}&orderBy=${orderBy}&startIndex=${startIndex}&key=${API_KEY}`).then(response => response.json())
         return data.items
     }
 )
