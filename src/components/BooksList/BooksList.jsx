@@ -26,7 +26,7 @@ const BooksList = () => {
             <div className="books-list">
                 {!!books?.length && books.map(book => <BookItem key={book.id} {...book} />)}
             </div>
-            {books && <button onClick={fetchMoreBooks}>More books</button>}
+            {books && <button onClick={fetchMoreBooks}>{isLoading ? 'Loading...' : 'More books'}</button>}
         </div>
     )
 }
