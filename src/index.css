@@ -2,11 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,13 +9,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+#root {
+  width: 100%;
+  height: 100vh;
 }
 
 body {
@@ -31,39 +28,103 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
+button,
+select,
+input {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #646cff;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+
+button:hover:not(:disabled),
+select:hover,
+input:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: #cccfff;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffac;
+  padding: 20px;
+}
+
+header > div {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search,
+.filter,
+.filter > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.wrapper {
+  padding: 20px;
+  text-align: center;
+}
+.books-list {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 20px;
+  
+}
+
+.book-item > a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f3f2f1;
+  border-radius: 10px;
+  padding: 10px;
+  transition: background-color 0.25s;
+}
+
+.book-item > a:hover {
+  background-color: #dfdfdf;
+}
+
+.book-page {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.book-image {
+  text-align: center;
+  padding: 20px;
+  background-color: #dfdfdf;
+  flex: 1;
+}
+
+.book-info {
+  padding: 20px;
+  flex: 1;
 }
