@@ -25,7 +25,7 @@ const BookPage = () => {
                         <p>{book.volumeInfo?.categories && book.volumeInfo.categories.join('/ ')}</p>
                         <h1>{book.volumeInfo.title}</h1>
                         <p><i>{book.volumeInfo?.authors && book.volumeInfo.authors.join(', ')}</i></p>
-                        <div>{book.volumeInfo.description}</div>
+                        <div dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}></div>
                     </div>
                 </div>
             }
