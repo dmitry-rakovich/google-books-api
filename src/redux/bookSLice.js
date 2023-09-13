@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../constants";
+import { returnUniqItems } from "../utils";
 const API_KEY = import.meta.env.VITE_API_KEY
 
 const initialState = {
@@ -44,8 +45,8 @@ export const bookSlice = createSlice({
         [fetchBooks.fulfilled]: (state, action) => {
             state.isLoading = false
             if(state.params.startIndex === 0) {
-                state.books = action.payload.items
-            } else state.books = [...state.books, ...action.payload.items]
+                state.books = returnUniqItems(action.payload.items)
+            } else state.books = returnUniqItems([...state.books, ...action.payload.items])
             state.total = action.payload.totalItems
         },
         [fetchBooks.rejected]: (state, action) => {
