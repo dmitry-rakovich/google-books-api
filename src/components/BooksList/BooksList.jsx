@@ -20,7 +20,7 @@ const BooksList = () => {
 
     return (
         <div className="wrapper">
-            {books?.length && !isLoading && <h1>Found {total} results</h1>}
+            {!!books?.length && !isLoading && <h1>Found {total} results</h1>}
             {!books && !isLoading && <h1>No books</h1>}
             {isLoading && <h1>Loading...</h1>}
             <div className="books-list">
